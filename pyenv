@@ -3,4 +3,7 @@
 import os
 import sys
 
-print(os.getlogin())
+print("Home Folder Location: " + os.environ['HOME'])
+print("Hostname of Machine:  " + os.environ['USER'])
+print("Type of Shell:  " + os.environ['SHELL'])
+print("Current Working Directory: " + os.environ['PWD'])

@@ -1,0 +1,14 @@
+#!/usr/bin/python
+
+import os
+import sys
+
+path = os.getcwd()
+for item in sys.argv:
+	# print(item)
+	checkExist = os.path.exists(path + "/" + item)
+	if checkExist == True:
+		print("Error, folder/file exists")
+	else:
+		os.mkdir(item)
+		print("Folder/file created")
