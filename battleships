@@ -1,0 +1,135 @@
+#!/usr/bin/python
+
+class ships():
+	boats = []
+	def add(self, boat):
+		assert isinstance(boat, ships)
+
+class patrolboat():
+	instances = 0
+	def __init__(self):
+		self.length = "1"
+		self.height = "2"
+		if patrolboat.instances == 2:
+			del self
+			print("Maximum of 2 patrol boats")
+			return
+		patrolboat.instances += 1
+		print("Patrol boat created")
+
+class battleship():
+	instances = 0
+	def __init__(self):
+		self.length = "1"
+		self.height = "3"
+		if battleship.instances == 2:
+			del self
+			print("Maximum of 2 battleships")
+			return
+		battleship.instances += 1
+		print("Battleship created")
+
+class submarine():
+	instances = 0
+	def __init__(self):
+		self.length = "1"
+		self.height = "3"
+		if submarine.instances == 1:
+			del self
+			print("Maximum of 1 submarine")
+			return
+		submarine.instances += 1
+		print("Submarine created")
+
+class destroyer():
+	instances = 0
+	def __init__(self):
+		self.length = "1"
+		self.height = "4"
+		if destroyer.instances == 1:
+			del self
+			print("Maximum of 1 destroyer")
+			return
+		destroyer.instances += 1
+		print("Destroyer created")
+
+class carrier():
+	instances = 0
+	def __init__(self):
+		self.length = "1"
+		self.height = "5"
+		if carrier.instances == 1:
+			del self
+			print("Maximum of 1 carrier")
+			return
+		carrier.instances += 1
+		print("Carrier created")
+
+'''
+a = patrolboat()
+b = patrolboat()
+c = patrolboat()
+d = battleship()
+e = battleship()
+f = battleship()
+g = submarine()
+h = submarine()
+i = submarine()
+j = destroyer()
+k = destroyer()
+l = destroyer()
+m = carrier()
+n = carrier()
+o = carrier()
+'''
+
+row = 10
+col = 10
+a = [0] * row
+for i in range(row):
+	a[i] = ['-'] * col
+	#print('x ' * col)
+#print(a)
+a[0][0] = '*'
+
+a[0][1] = '1'
+a[0][2] = '2'
+a[0][3] = '3'
+a[0][4] = '4'
+a[0][5] = '5'
+a[0][6] = '6'
+a[0][7] = '7'
+a[0][8] = '8'
+a[0][9] = '9'
+#a[0][10] = '9'
+
+a[1][0] = '1'
+a[2][0] = '2'
+a[3][0] = '3'
+a[4][0] = '4'
+a[5][0] = '5'
+a[6][0] = '6'
+a[7][0] = '7'
+a[8][0] = '8'
+a[9][0] = '9'
+#a[10][0] = '9'
+
+print("--------------------------------------------------")
+for n in a:
+	print n
+print("--------------------------------------------------")
+
+'''
+print("--------------------------------------------------")
+a[1][5] = 's'
+for n in a:
+	print n
+'''
+
+x = input("input row: ")
+y = input("input column: ")
+a[x][y] = 'O'
+print("--------------------------------------------------")
+for n in a:
+	print n
+print("--------------------------------------------------")
