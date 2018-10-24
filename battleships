@@ -77,6 +77,12 @@ class carrier(ships):
 		carrier.instances += 1
 		print("Carrier created")
 
+def printTable():
+	# print out table
+	print("--------------------------------------------------")
+	for n in a:
+		print(n)
+	print("--------------------------------------------------")
 
 # create 10x10 board
 row = 10
@@ -108,12 +114,8 @@ a[7][0] = '7'
 a[8][0] = '8'
 a[9][0] = '9'
 
-# print out table
-print("--------------------------------------------------")
-for n in a:
-	print(n)
-print("--------------------------------------------------")
 
+printTable()
 
 # create ships
 ships = ships()
@@ -139,21 +141,29 @@ for ship in ships.boats:
 	if 0<=x<=9:
 		#x, y, z = location
 		#x = location.split(",")
-		print(x)
-		print(type(x))
+		#print(x)
+		#print(type(x))
 		#int(x)
 		#print(type(x))
-		#a[x][y] = 'O'
+		a[x][y] = 'O'
+		direction = input("Enter direction of boat: \n" +
+							"v) vertical, h) horizontal \n")
+		if direction == 'v':
+			print('v')
+			for i in range(x, int(ship.height)):
+				a[x+i][y] = 'O'
+			printTable()
+		elif direction == 'h':
+			print('h')
+			for i in range(x, int(ship.height)):
+				a[x][y+i] = 'O'
+			printTable()
+		else:
+			print('enter v or h')
 	else:
 		print("Input has to be between 0 and 9")
 		break
 
-
-# print out table
-print("--------------------------------------------------")
-for n in a:
-	print(n)
-print("--------------------------------------------------")
 
 '''
 print("--------------------------------------------------")
