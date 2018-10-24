@@ -1,13 +1,17 @@
-#!/usr/bin/python
+#!/usr/bin/python3
+import re
 
 class ships():
 	boats = []
 	def add(self, boat):
-		assert isinstance(boat, ships)
+		# assert isinstance(boat, ships)
+		self.boats.append(boat)
 
-class patrolboat():
+# create patrolboat, max 2 instances
+class patrolboat(ships):
 	instances = 0
 	def __init__(self):
+		self.name = "Patrol Boat"
 		self.length = "1"
 		self.height = "2"
 		if patrolboat.instances == 2:
@@ -17,9 +21,11 @@ class patrolboat():
 		patrolboat.instances += 1
 		print("Patrol boat created")
 
-class battleship():
+# create battleship, max 2 instances
+class battleship(ships):
 	instances = 0
 	def __init__(self):
+		self.name = "Battleship"
 		self.length = "1"
 		self.height = "3"
 		if battleship.instances == 2:
@@ -29,9 +35,11 @@ class battleship():
 		battleship.instances += 1
 		print("Battleship created")
 
-class submarine():
+# create submarine, max 1 instances
+class submarine(ships):
 	instances = 0
 	def __init__(self):
+		self.name = "Submarine"
 		self.length = "1"
 		self.height = "3"
 		if submarine.instances == 1:
@@ -41,9 +49,11 @@ class submarine():
 		submarine.instances += 1
 		print("Submarine created")
 
-class destroyer():
+# create destroyer, max 1 instances
+class destroyer(ships):
 	instances = 0
 	def __init__(self):
+		self.name = "Destroyer"
 		self.length = "1"
 		self.height = "4"
 		if destroyer.instances == 1:
@@ -53,9 +63,11 @@ class destroyer():
 		destroyer.instances += 1
 		print("Destroyer created")
 
-class carrier():
+# create carrier, max 1 instances
+class carrier(ships):
 	instances = 0
 	def __init__(self):
+		self.name = "Carrier"
 		self.length = "1"
 		self.height = "5"
 		if carrier.instances == 1:
@@ -65,31 +77,15 @@ class carrier():
 		carrier.instances += 1
 		print("Carrier created")
 
-'''
-a = patrolboat()
-b = patrolboat()
-c = patrolboat()
-d = battleship()
-e = battleship()
-f = battleship()
-g = submarine()
-h = submarine()
-i = submarine()
-j = destroyer()
-k = destroyer()
-l = destroyer()
-m = carrier()
-n = carrier()
-o = carrier()
-'''
 
+# create 10x10 board
 row = 10
 col = 10
 a = [0] * row
 for i in range(row):
 	a[i] = ['-'] * col
-	#print('x ' * col)
-#print(a)
+
+# add borders to board
 a[0][0] = '*'
 
 a[0][1] = '1'
@@ -101,7 +97,6 @@ a[0][6] = '6'
 a[0][7] = '7'
 a[0][8] = '8'
 a[0][9] = '9'
-#a[0][10] = '9'
 
 a[1][0] = '1'
 a[2][0] = '2'
@@ -112,19 +107,55 @@ a[6][0] = '6'
 a[7][0] = '7'
 a[8][0] = '8'
 a[9][0] = '9'
-#a[10][0] = '9'
 
+# print out table
+print("--------------------------------------------------")
+for n in a:
+	print(n)
+print("--------------------------------------------------")
+
+
+# create ships
+ships = ships()
+ships.add(patrolboat())
+ships.add(patrolboat())
+ships.add(battleship())
+ships.add(battleship())
+ships.add(submarine())
+ships.add(destroyer())
+ships.add(carrier())
+
+# regex pattern to check user input
+pattern = re.compile("\d,\d")
+for ship in ships.boats:
+	location = input("Where would you like to place your " + ship.name + "\n" +
+						"Enter a coordinate from (1,1) to (9,9) \n")
+	print(location)
+	if pattern.match(location):
+		#x, y, z = location
+		x = location.split(",")
+		print(x[0])
+		print(type(x[0]))
+		int(x[0])
+		print(type(x[0]))
+		#a[x][z] = 'O'
+	else:
+		print("failed")
+		break
+
+
+# print out table
+print("--------------------------------------------------")
+for n in a:
+	print(n)
+print("--------------------------------------------------")
+
+'''
 print("--------------------------------------------------")
 for n in a:
 	print n
 print("--------------------------------------------------")
 
-'''
-print("--------------------------------------------------")
-a[1][5] = 's'
-for n in a:
-	print n
-'''
 
 x = input("input row: ")
 y = input("input column: ")
@@ -133,3 +164,4 @@ print("--------------------------------------------------")
 for n in a:
 	print n
 print("--------------------------------------------------")
+'''
