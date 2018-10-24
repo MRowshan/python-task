@@ -138,7 +138,7 @@ for ship in ships.boats:
 
 	print(x, y)
 	#if pattern.match(x):
-	if 0<=x<=9:
+	if 0<=x<=9 and 0<=y<=9:
 		a[x][y] = 'O'
 		#x, y, z = location
 		#x = location.split(",")
