@@ -126,21 +126,26 @@ ships.add(destroyer())
 ships.add(carrier())
 
 # regex pattern to check user input
-pattern = re.compile("\d,\d")
+#pattern = re.compile("[0-9]")
 for ship in ships.boats:
-	location = input("Where would you like to place your " + ship.name + "\n" +
-						"Enter a coordinate from (1,1) to (9,9) \n")
-	print(location)
-	if pattern.match(location):
+	# location = input("Where would you like to place your " + ship.name + "\n" +
+	#					"Enter a coordinate from (1,1) to (9,9) \n")
+	x = int(input("Enter x coordinate for " + ship.name + "\n"))
+
+	y = int(input("Enter y cooridnate for " + ship.name + "\n"))
+
+	print(x, y)
+	#if pattern.match(x):
+	if 0<=x<=9:
 		#x, y, z = location
-		x = location.split(",")
-		print(x[0])
-		print(type(x[0]))
-		int(x[0])
-		print(type(x[0]))
-		#a[x][z] = 'O'
+		#x = location.split(",")
+		print(x)
+		print(type(x))
+		#int(x)
+		#print(type(x))
+		#a[x][y] = 'O'
 	else:
-		print("failed")
+		print("Input has to be between 0 and 9")
 		break
 
 
